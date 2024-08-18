@@ -27,9 +27,9 @@ function App() {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
-  return loading ? (
-    <Loader />
-  ) : (
+  if (loading) <Loader />;
+
+  return (
     <DefaultLayout>
       <Routes>
         <Route
