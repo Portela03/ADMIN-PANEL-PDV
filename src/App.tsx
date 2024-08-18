@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
-import PageTitle from './components/PageTitle';
 import {
   CustomerCreate,
   CustomerList,
@@ -14,6 +13,7 @@ import { Loader } from './@view/component/Loader';
 import ECommerce from './@view/screens/Dashboard/ECommerce';
 import Profile from './@view/screens/Profile/Profile';
 import Settings from './@view/screens/Settings/Settings';
+import PageTitle from './@view/component/PageTitle/PageTitle';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
