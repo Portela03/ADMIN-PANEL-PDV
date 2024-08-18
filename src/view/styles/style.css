@@ -22,6 +22,20 @@
     scrollbar-width: none; /* Firefox */
   }
 
+.scrollbar-custom::-webkit-scrollbar {
+  width: 8px;  
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.5);  
+  border-radius: 8px;  
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background-color: rgba(200, 200, 200, 0.2);  
+  border-radius: 8px;  
+}
+
   .chat-height {
     @apply h-[calc(100vh_-_8.125rem)] lg:h-[calc(100vh_-_5.625rem)];
   }
@@ -209,6 +223,8 @@ span.flatpickr-weekday,
 .custom-input-date-2::-webkit-calendar-picker-indicator {
   background-image: url(./images/icon/icon-arrow-down.svg);
 }
+
+
 
 [x-cloak] {
   display: none !important;

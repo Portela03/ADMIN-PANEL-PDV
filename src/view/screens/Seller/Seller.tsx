@@ -18,7 +18,7 @@ export function SellerCreate() {
 
       
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+    <div className="max-w-2xl mx-auto p-6 border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark rounded-lg">
       <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
         Cadastrar Cliente
       </h2>
@@ -26,7 +26,7 @@ export function SellerCreate() {
         <div>
           <label
             htmlFor="nome"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            className="block text-sm font-medium text-gray-300 dark:text-gray-300 mb-2"
           >
             Nome
           </label>

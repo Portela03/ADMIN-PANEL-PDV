@@ -17,27 +17,27 @@ export function Table({ brandData }: { brandData: BRAND[] }) {
       </h4>
 
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-          <thead className="bg-gray-50 dark:bg-gray-800">
+        <table className="min-w-full divide-y divide-gray-200 dark:divide-strokedark">
+          <thead className="bg-gray-50 dark:bg-graydark">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-white">
                 Nome
               </th>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
+              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-white">
                 CPF/CNPJ
               </th>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
+              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-white">
                 Telefone
               </th>
-              <th className="hidden px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300 sm:table-cell">
+              <th className="hidden px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-white sm:table-cell">
                 Ações
               </th>
-              <th className="hidden px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300 sm:table-cell">
-                Conversion
+              <th className="hidden px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-white sm:table-cell">
+                Conversão
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-900 dark:divide-gray-700">
+          <tbody className="bg-white divide-y divide-gray-200 dark:bg-boxdark dark:divide-strokedark">
             {brandData.map((brand, key) => (
               <tr
                 className={classNames(
@@ -58,16 +58,16 @@ export function Table({ brandData }: { brandData: BRAND[] }) {
                     </p>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300 text-center">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-white text-center">
                   {brand.visitors}K
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300 text-center">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-white text-center">
                   ${brand.revenues}
                 </td>
-                <td className="hidden px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300 text-center sm:table-cell">
+                <td className="hidden px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-white text-center sm:table-cell">
                   {brand.sales}
                 </td>
-                <td className="hidden px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300 text-center sm:table-cell">
+                <td className="hidden px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-white text-center sm:table-cell">
                   {brand.conversion}%
                 </td>
               </tr>

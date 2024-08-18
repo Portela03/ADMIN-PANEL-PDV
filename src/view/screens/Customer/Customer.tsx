@@ -23,7 +23,7 @@ export function CustomerCreate() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+    <div className="max-w-2xl mx-auto p-6 border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark rounded-lg">
       <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
         Cadastrar Cliente
       </h2>
@@ -31,7 +31,7 @@ export function CustomerCreate() {
         <div>
           <label
             htmlFor="nome"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            className="block text-sm font-medium text-gray-300 dark:text-gray-300 mb-2"
           >
             Nome
           </label>
@@ -48,7 +48,7 @@ export function CustomerCreate() {
         <div>
           <label
             htmlFor="telefone"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            className="block text-sm font-medium text-gray-300 dark:text-gray-300 mb-2"
           >
             Telefone
           </label>
@@ -65,7 +65,7 @@ export function CustomerCreate() {
         <div>
           <label
             htmlFor="cpf"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            className="block text-sm font-medium text-gray-300 dark:text-gray-300 mb-2"
           >
             CPF
           </label>
@@ -82,7 +82,7 @@ export function CustomerCreate() {
         <div>
           <label
             htmlFor="cnpj"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            className="block text-sm font-medium text-gray-300 dark:text-gray-300 mb-2"
           >
             CNPJ
           </label>
@@ -99,7 +99,7 @@ export function CustomerCreate() {
         <div>
           <label
             htmlFor="endereco"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            className="block text-sm font-medium text-gray-300 dark:text-gray-300 mb-2"
           >
             Endereço Completo
           </label>
@@ -116,7 +116,7 @@ export function CustomerCreate() {
         <div>
           <label
             htmlFor="inscricaoEstadual"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            className="block text-sm font-medium text-gray-300 dark:text-gray-300 mb-2"
           >
             Inscrição Estadual
           </label>
