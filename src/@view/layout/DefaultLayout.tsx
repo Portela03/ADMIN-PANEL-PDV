@@ -1,8 +1,8 @@
-import React, { useState, ReactNode } from 'react';
-import Header from '../components/Header/index';
-import Sidebar from '../@view/layout/Sidebar';
+import { useState, ReactNode } from 'react';
+import Sidebar from './Sidebar';
+import Header from './Header';
 
-const DefaultLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
+export function DefaultLayout({ children }: { children: ReactNode}) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -21,5 +21,3 @@ const DefaultLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
     </div>
   );
 };
-
-export default DefaultLayout;

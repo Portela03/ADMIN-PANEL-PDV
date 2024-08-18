@@ -1,12 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
-import { Loader } from './common/Loader';
 import PageTitle from './components/PageTitle';
-import ECommerce from './pages/Dashboard/ECommerce';
-import Profile from './pages/Profile';
-import Settings from './pages/Settings';
-import DefaultLayout from './layout/DefaultLayout';
 import {
   CustomerCreate,
   CustomerList,
@@ -14,6 +9,11 @@ import {
 import { SellerCreate, SellerList } from './@view/screens/Seller/Seller';
 import { ProductCreate, ProductList } from './@view/screens/Product/Product';
 import { PDV } from './@view/screens/PDV/PDV';
+import { DefaultLayout } from './@view/layout/DefaultLayout';
+import { Loader } from './@view/component/Loader';
+import ECommerce from './@view/screens/Dashboard/ECommerce';
+import Profile from './@view/screens/Profile/Profile';
+import Settings from './@view/screens/Settings/Settings';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
