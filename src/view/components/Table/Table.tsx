@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 type BRAND = {
   logo: string;
   name: string;
@@ -38,11 +40,10 @@ export function Table({ brandData }: { brandData: BRAND[] }) {
           <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-900 dark:divide-gray-700">
             {brandData.map((brand, key) => (
               <tr
-                className={`${
-                  key === brandData.length
-                    ? ''
-                    : 'border-b border-stroke dark:border-strokedark'
-                }`}
+                className={classNames(
+                  !(key === brandData.length) &&
+                    'border-b border-stroke dark:border-strokedark',
+                )}
                 key={key}
               >
                 <td className="px-6 py-4 whitespace-nowrap">

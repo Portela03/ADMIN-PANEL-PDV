@@ -16,19 +16,19 @@ export function ClickOutside({
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleClickListener = (event: MouseEvent) => {
+    const handleClickListener = (e: MouseEvent) => {
       let clickedInside: null | boolean = false;
       if (exceptionRef) {
         clickedInside =
           (wrapperRef.current &&
-            wrapperRef.current.contains(event.target as Node)) ||
-          (exceptionRef.current && exceptionRef.current === event.target) ||
+            wrapperRef.current.contains(e.target as Node)) ||
+          (exceptionRef.current && exceptionRef.current === e.target) ||
           (exceptionRef.current &&
-            exceptionRef.current.contains(event.target as Node));
+            exceptionRef.current.contains(e.target as Node));
       } else {
         clickedInside =
           wrapperRef.current &&
-          wrapperRef.current.contains(event.target as Node);
+          wrapperRef.current.contains(e.target as Node);
       }
 
       if (!clickedInside) onClick();

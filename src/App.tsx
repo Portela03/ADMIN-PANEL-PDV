@@ -13,7 +13,7 @@ import { Loader } from './view/components/Loader';
 import ECommerce from './view/screens/Dashboard/ECommerce';
 import Profile from './view/screens/Profile/Profile';
 import Settings from './view/screens/Settings/Settings';
-import PageTitle from './view/components/PageTitle/PageTitle';
+import { PageTitle } from './view/components/PageTitle/PageTitle';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
