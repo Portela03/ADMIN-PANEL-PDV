@@ -1,79 +1,88 @@
 import classNames from 'classnames';
 
-type BRAND = {
-  logo: string;
-  name: string;
-  visitors: number;
-  revenues: string;
-  sales: number;
-  conversion: number;
+type Head = {
+  value: string;
+  key: string;
 };
 
-export function Table({ brandData }: { brandData: BRAND[] }) {
+type TableProps<Body> = {
+  title: string;
+  head: Head[];
+  body: Body[];
+};
+
+export function Table<Body extends Record<string, any>>({
+  head,
+  body,
+  title,
+}: TableProps<Body>) {
   return (
-    <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+    <div className="rounded-sm border max-lg:border-0 border-stroke bg-white max-lg:bg-transparent shadow-default dark:border-strokedark dark:bg-boxdark">
       <h4 className="mb-6 text-xl font-semibold text-black dark:text-white px-5 pt-6">
-        Meus Clientes
+        {title}
       </h4>
 
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-          <thead className="bg-gray-50 dark:bg-gray-800">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                Nome
-              </th>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                CPF/CNPJ
-              </th>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                Telefone
-              </th>
-              <th className="hidden px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300 sm:table-cell">
-                Ações
-              </th>
-              <th className="hidden px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300 sm:table-cell">
-                Conversion
-              </th>
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-900 dark:divide-gray-700">
-            {brandData.map((brand, key) => (
-              <tr
-                className={classNames(
-                  !(key === brandData.length) &&
-                    'border-b border-stroke dark:border-strokedark',
-                )}
-                key={key}
-              >
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="flex items-center gap-3">
-                    <img
-                      src={brand.logo}
-                      alt="Brand"
-                      className="w-16 h-16 rounded-full"
-                    />
-                    <p className="text-sm font-medium text-gray-900 dark:text-white hidden sm:block">
-                      {brand.name}
-                    </p>
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300 text-center">
-                  {brand.visitors}K
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300 text-center">
-                  ${brand.revenues}
-                </td>
-                <td className="hidden px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300 text-center sm:table-cell">
-                  {brand.sales}
-                </td>
-                <td className="hidden px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300 text-center sm:table-cell">
-                  {brand.conversion}%
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className="block lg:hidden">
+          {body.map((row, rowIndex) => (
+            <div
+              key={rowIndex}
+              className="border border-gray-300 dark:border-gray-700 rounded-lg mb-4 bg-white dark:bg-gray-800 shadow-md"
+            >
+              {head.map((col) => (
+                <div
+                  key={col.key}
+                  className="p-4 flex items-center justify-between border-b border-stroke dark:border-gray-700 last:border-b-0"
+                >
+                  <strong className="text-gray-500 dark:text-gray-300 text-sm font-medium">
+                    {col.value}
+                  </strong>
+                  <span className="text-gray-800 dark:text-gray-200 text-sm">
+                    {String(row[col.key as keyof Body])}
+                  </span>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+        <div className="hidden lg:block">
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+              <thead className="bg-gray-50 dark:bg-gray-800">
+                <tr>
+                  {head.map((item) => (
+                    <th
+                      key={item.key}
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300"
+                    >
+                      {item.value}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-900 dark:divide-gray-700">
+                {body.map((row, rowIndex) => (
+                  <tr
+                    key={rowIndex}
+                    className={classNames(
+                      rowIndex < body.length - 1 &&
+                        'border-b border-stroke dark:border-gray-700',
+                    )}
+                  >
+                    {head.map((col) => (
+                      <td
+                        key={col.key}
+                        className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300"
+                      >
+                        {String(row[col.key as keyof Body])}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   );
