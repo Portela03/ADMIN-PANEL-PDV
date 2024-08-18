@@ -1,6 +1,13 @@
-import { BRAND } from '../../../types/brand';
+type BRAND = {
+  logo: string;
+  name: string;
+  visitors: number;
+  revenues: string;
+  sales: number;
+  conversion: number;
+};
 
-const Table = ({ brandData }: { brandData: BRAND[] }) => {
+export function Table({ brandData }: { brandData: BRAND[] }) {
   return (
     <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
       <h4 className="mb-6 text-xl font-semibold text-black dark:text-white px-5 pt-6">
@@ -32,13 +39,19 @@ const Table = ({ brandData }: { brandData: BRAND[] }) => {
             {brandData.map((brand, key) => (
               <tr
                 className={`${
-                  key === brandData.length ? '' : 'border-b border-stroke dark:border-strokedark'
+                  key === brandData.length
+                    ? ''
+                    : 'border-b border-stroke dark:border-strokedark'
                 }`}
                 key={key}
               >
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center gap-3">
-                    <img src={brand.logo} alt="Brand" className="w-16 h-16 rounded-full" />
+                    <img
+                      src={brand.logo}
+                      alt="Brand"
+                      className="w-16 h-16 rounded-full"
+                    />
                     <p className="text-sm font-medium text-gray-900 dark:text-white hidden sm:block">
                       {brand.name}
                     </p>
@@ -63,6 +76,4 @@ const Table = ({ brandData }: { brandData: BRAND[] }) => {
       </div>
     </div>
   );
-};
-
-export default Table;
+}

@@ -1,4 +1,4 @@
-import Table from '../../component/Table/Table';
+import Table from '../../components/Table/Table';
 import { useState, ChangeEvent, FormEvent } from 'react';
 
 export function ProductCreate() {

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MdLogout, MdOutlineEventNote, MdOutlineKeyboardArrowDown, MdOutlinePerson, MdSettings } from 'react-icons/md';
-import ClickOutside from '../../component/ClickOutside/ClickOutside';
+import { ClickOutside } from '../../components/ClickOutside/ClickOutside';
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);

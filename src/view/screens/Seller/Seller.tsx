@@ -1,5 +1,5 @@
 import { useState, ChangeEvent, FormEvent } from "react";
-import Table from "../../component/Table/Table";
+import Table from "../../components/Table/Table";
 
 export function SellerCreate() {
     const [formData, setFormData] = useState({

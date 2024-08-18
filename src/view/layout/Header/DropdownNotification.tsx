@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MdOutlineNotifications } from 'react-icons/md';
-import ClickOutside from '../../component/ClickOutside/ClickOutside';
+import { ClickOutside } from '../../components/ClickOutside/ClickOutside';
 
 const DropdownNotification = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);

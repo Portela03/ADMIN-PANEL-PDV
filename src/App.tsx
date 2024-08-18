@@ -4,16 +4,16 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import {
   CustomerCreate,
   CustomerList,
-} from './@view/screens/Customer/Customer';
-import { SellerCreate, SellerList } from './@view/screens/Seller/Seller';
-import { ProductCreate, ProductList } from './@view/screens/Product/Product';
-import { PDV } from './@view/screens/PDV/PDV';
-import { DefaultLayout } from './@view/layout/DefaultLayout';
-import { Loader } from './@view/component/Loader';
-import ECommerce from './@view/screens/Dashboard/ECommerce';
-import Profile from './@view/screens/Profile/Profile';
-import Settings from './@view/screens/Settings/Settings';
-import PageTitle from './@view/component/PageTitle/PageTitle';
+} from './view/screens/Customer/Customer';
+import { SellerCreate, SellerList } from './view/screens/Seller/Seller';
+import { ProductCreate, ProductList } from './view/screens/Product/Product';
+import { PDV } from './view/screens/PDV/PDV';
+import { DefaultLayout } from './view/layout/DefaultLayout';
+import { Loader } from './view/components/Loader';
+import ECommerce from './view/screens/Dashboard/ECommerce';
+import Profile from './view/screens/Profile/Profile';
+import Settings from './view/screens/Settings/Settings';
+import PageTitle from './view/components/PageTitle/PageTitle';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);

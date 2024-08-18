@@ -1,18 +1,18 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect, ReactNode, RefObject } from 'react';
 
 interface Props {
-  children: React.ReactNode;
-  exceptionRef?: React.RefObject<HTMLElement>;
+  children: ReactNode;
+  exceptionRef?: RefObject<HTMLElement>;
   onClick: () => void;
   className?: string;
 }
 
-const ClickOutside: React.FC<Props> = ({
+export function ClickOutside({
   children,
   exceptionRef,
   onClick,
   className,
-}) => {
+}: Props) {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -46,6 +46,4 @@ const ClickOutside: React.FC<Props> = ({
       {children}
     </div>
   );
-};
-
-export default ClickOutside;
+}
