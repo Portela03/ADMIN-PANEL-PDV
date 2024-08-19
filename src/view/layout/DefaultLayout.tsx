@@ -1,8 +1,9 @@
-import { useState, ReactNode } from 'react';
+import { useState } from 'react';
 import Sidebar from './Sidebar';
 import Header from './Header';
+import { Outlet } from 'react-router-dom';
 
-export function DefaultLayout({ children }: { children: ReactNode}) {
+export function DefaultLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -13,7 +14,7 @@ export function DefaultLayout({ children }: { children: ReactNode}) {
           <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
           <main>
             <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-              {children}
+              <Outlet />
             </div>
           </main>
         </div>
