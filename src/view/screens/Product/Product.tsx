@@ -40,7 +40,7 @@ export function ProductList() {
         ]}
         body={products.map((product) => ({
           name: product.name,
-          referenceCode: product.referenceCode,
+          referenceCode: product.ref,
           wholesalePrice: product.wholesalePrice,
           retailPrice: product.retailPrice,
         }))}
