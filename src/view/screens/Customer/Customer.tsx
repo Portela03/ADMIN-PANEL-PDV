@@ -1,6 +1,8 @@
 import { Table } from '../../components/Table/Table';
-
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { URL_API } from '../../../data/datasource/api';
+import { InsertCustomerModel } from '../../../data/models/CustomerList/CustomerList.model';
+import axios from 'axios';
 
 export function CustomerCreate() {
   const [formData, setFormData] = useState({
@@ -145,37 +147,55 @@ export function CustomerCreate() {
   );
 }
 export function CustomerList() {
+
+  const [customer, setCustomer] = useState<InsertCustomerModel[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  useEffect(()=>{
+    axios.get<InsertCustomerModel[]>(`${URL_API}/clients`)
+      .then((response)=>{
+        setCustomer(response.data);
+        console.log(response.data)
+      })
+      .catch((error) => {
+        setError(error);
+        
+      })
+      .finally(() => {
+        setLoading(false)
+
+      })
+
+  },[])
+
+  if (loading) return <div>Carregando...</div>;
+  if(error) return <div>{error}</div>
+  
+
+
   return (
     <div>
-      <Table
-        title="Lista de Clientes"
-        head={[
-          { value: 'Nome', key: 'nome' },
-          { value: 'Telefone', key: 'telefone' },
-          { value: 'CPF', key: 'cpf' },
-          { value: 'CNPJ', key: 'cnpj' },
-          { value: 'Endereço', key: 'endereco' },
-          { value: 'Inscrição Estadual', key: 'inscricaoEstadual' },
-        ]}
-        body={[
-          {
-            nome: 'João da Silva',
-            telefone: '(11) 98765-4321',
-            cpf: '123.456.789-00',
-            cnpj: '12.345.678/0001-00',
-            endereco: 'Rua A, 123, Centro, São Paulo - SP',
-            inscricaoEstadual: '123.456.789.012',
-          },
-          {
-            nome: 'Maria Oliveira',
-            telefone: '(21) 91234-5678',
-            cpf: '987.654.321-00',
-            cnpj: '98.765.432/0001-00',
-            endereco: 'Avenida B, 456, Bairro, Rio de Janeiro - RJ',
-            inscricaoEstadual: '987.654.321.098',
-          },
-        ]}
-      />
+  <Table
+  title="Lista de Clientes"
+  head={[
+    { value: 'Nome', key: 'nome' },
+    { value: 'Telefone', key: 'telefone' },
+    { value: 'CPF', key: 'cpf' },
+    { value: 'CNPJ', key: 'cnpj' },
+    { value: 'Endereço', key: 'endereco' },
+    { value: 'Inscrição Estadual', key: 'inscricaoEstadual' },
+  ]}
+  body={customer.map((customer) => ({
+    nome: customer.name,
+    telefone: customer.phone,
+    cpf: customer.cpf,
+    cnpj: customer.cnpj,
+    endereco: `${customer.street}, ${customer.number}, ${customer.neighborhood}, ${customer.city} - ${customer.state}`,
+    inscricaoEstadual: customer.stateRegistration,
+  }))}
+/>
+
+
     </div>
   );
 }
