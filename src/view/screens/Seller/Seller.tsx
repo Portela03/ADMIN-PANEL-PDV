@@ -1,6 +1,12 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import classNames from 'classnames';
 import { Table } from '../../components/Table/Table';
 import { useSeller } from './useSeller';
+import { URL_API } from '../../../data/datasource/api';
+import { Seller } from '../../../data/models/Seller/Seller.model';
+
+
 
 export function SellerCreate() {
   const { errors, onsubmit, register } = useSeller();
@@ -52,19 +58,35 @@ export function SellerCreate() {
 }
 
 export function SellerList() {
+  const [sellers, setSellers] = useState<Seller[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    axios.get<Seller[]>(`${URL_API}/seller`)
+      .then((response) => {
+        setSellers(response.data);
+      })
+      .catch((error) => {
+        setError('Erro ao carregar os vendedores.');
+        console.error(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <div>Carregando...</div>;
+  if (error) return <div>{error}</div>;
+
   return (
     <div>
       <Table
         title="Lista de Vendedores"
         head={[{ value: 'Nome', key: 'name' }]}
-        body={[
-          {
-            name: 'João da Silva',
-          },
-          {
-            name: 'Maria Oliveira',
-          },
-        ]}
+        body={sellers.map((seller) => ({
+          name: seller.name,
+        }))}
       />
     </div>
   );

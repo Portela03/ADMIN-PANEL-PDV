@@ -17,7 +17,7 @@ export function useSeller() {
     formState: { errors },
   } = form;
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
+  const onSubmit: SubmitHandler<FormData> = (data: any) => {
     console.log(data);
   };
 

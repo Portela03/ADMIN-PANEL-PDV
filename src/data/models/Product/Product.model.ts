@@ -1,6 +1,5 @@
 export class ProductModel {
     public name: string;
-    
     public retailPrice: string;
     public wholesalePrice: string
     public referenceCode:string
